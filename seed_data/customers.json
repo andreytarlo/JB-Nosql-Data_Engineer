@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "address": {"street": "123 Main St", "city": "Portland", "state": "OR", "zip": "97201"}
+  },
+  {
+    "id": 2,
+    "name": "Bob Martinez",
+    "email": "bob.martinez@example.com",
+    "address": {"street": "456 Oak Ave", "city": "Austin", "state": "TX", "zip": "78701"}
+  },
+  {
+    "id": 3,
+    "name": "Carol Chen",
+    "email": "carol.chen@example.com",
+    "address": {"street": "789 Pine Rd", "city": "Seattle", "state": "WA", "zip": "98101"}
+  },
+  {
+    "id": 4,
+    "name": "David Kim",
+    "email": "david.kim@example.com",
+    "address": {"street": "22 Birch Ln", "city": "Denver", "state": "CO", "zip": "80201"}
+  },
+  {
+    "id": 5,
+    "name": "Emma Wilson",
+    "email": "emma.wilson@example.com",
+    "address": {"street": "55 Maple Dr", "city": "Chicago", "state": "IL", "zip": "60601"}
+  },
+  {
+    "id": 6,
+    "name": "Frank Nguyen",
+    "email": "frank.nguyen@example.com",
+    "address": {"street": "101 Cedar Blvd", "city": "San Francisco", "state": "CA", "zip": "94102"}
+  },
+  {
+    "id": 7,
+    "name": "Grace Patel",
+    "email": "grace.patel@example.com",
+    "address": {"street": "300 Elm St", "city": "Boston", "state": "MA", "zip": "02101"}
+  },
+  {
+    "id": 8,
+    "name": "Henry Okafor",
+    "email": "henry.okafor@example.com",
+    "address": {"street": "88 Walnut Ave", "city": "Atlanta", "state": "GA", "zip": "30301"}
+  },
+  {
+    "id": 9,
+    "name": "Isabella Rossi",
+    "email": "isabella.rossi@example.com",
+    "address": {"street": "14 Spruce Way", "city": "New York", "state": "NY", "zip": "10001"}
+  },
+  {
+    "id": 10,
+    "name": "James Park",
+    "email": "james.park@example.com",
+    "address": {"street": "67 Ash Court", "city": "Minneapolis", "state": "MN", "zip": "55401"}
+  },
+  {
+    "id": 11,
+    "name": "Karen Thompson",
+    "email": "karen.thompson@example.com",
+    "address": {"street": "900 Poplar St", "city": "Nashville", "state": "TN", "zip": "37201"}
+  },
+  {
+    "id": 12,
+    "name": "Liam O'Brien",
+    "email": "liam.obrien@example.com",
+    "address": {"street": "42 Fir Loop", "city": "Phoenix", "state": "AZ", "zip": "85001"}
+  },
+  {
+    "id": 13,
+    "name": "Maya Gupta",
+    "email": "maya.gupta@example.com",
+    "address": {"street": "200 Willow Rd", "city": "San Diego", "state": "CA", "zip": "92101"}
+  },
+  {
+    "id": 14,
+    "name": "Noah Davis",
+    "email": "noah.davis@example.com",
+    "address": {"street": "371 Hickory Pl", "city": "Raleigh", "state": "NC", "zip": "27601"}
+  },
+  {
+    "id": 15,
+    "name": "Olivia Brown",
+    "email": "olivia.brown@example.com",
+    "address": {"street": "88 Magnolia Ave", "city": "Miami", "state": "FL", "zip": "33101"}
+  }
+]

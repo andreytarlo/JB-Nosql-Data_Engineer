@@ -1,0 +1,538 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop Pro",
+    "price": 1299.99,
+    "stock_quantity": 25,
+    "category": "electronics",
+    "description": "High-performance laptop with Apple M3 chip, ideal for software development and data engineering workloads.",
+    "category_fields": {
+      "cpu": "Apple M3",
+      "ram_gb": 18,
+      "storage_gb": 512,
+      "screen_inches": 16.2
+    }
+  },
+  {
+    "id": 2,
+    "name": "Gaming Laptop",
+    "price": 1149.99,
+    "stock_quantity": 18,
+    "category": "electronics",
+    "description": "High-refresh-rate gaming laptop with discrete GPU and fast NVMe storage.",
+    "category_fields": {
+      "cpu": "Intel Core i9-13900H",
+      "ram_gb": 32,
+      "storage_gb": 1000,
+      "screen_inches": 15.6
+    }
+  },
+  {
+    "id": 3,
+    "name": "Wireless Mouse",
+    "price": 49.99,
+    "stock_quantity": 120,
+    "category": "electronics",
+    "description": "Ergonomic wireless mouse with silent clicks, 6-month battery life, and multi-device pairing.",
+    "category_fields": {
+      "cpu": null,
+      "ram_gb": null,
+      "storage_gb": null,
+      "screen_inches": null
+    }
+  },
+  {
+    "id": 4,
+    "name": "Mechanical Keyboard",
+    "price": 129.99,
+    "stock_quantity": 65,
+    "category": "electronics",
+    "description": "Tenkeyless mechanical keyboard with Cherry MX Red switches and RGB backlighting.",
+    "category_fields": {
+      "cpu": null,
+      "ram_gb": null,
+      "storage_gb": null,
+      "screen_inches": null
+    }
+  },
+  {
+    "id": 5,
+    "name": "4K Monitor",
+    "price": 499.99,
+    "stock_quantity": 30,
+    "category": "electronics",
+    "description": "27-inch 4K IPS monitor with USB-C 90W power delivery and HDR400 support.",
+    "category_fields": {
+      "cpu": null,
+      "ram_gb": null,
+      "storage_gb": null,
+      "screen_inches": 27.0
+    }
+  },
+  {
+    "id": 6,
+    "name": "USB-C Hub",
+    "price": 59.99,
+    "stock_quantity": 95,
+    "category": "electronics",
+    "description": "7-in-1 USB-C hub with 4K HDMI, 100W PD passthrough, SD card reader, and 3 USB-A ports.",
+    "category_fields": {
+      "cpu": null,
+      "ram_gb": null,
+      "storage_gb": null,
+      "screen_inches": null
+    }
+  },
+  {
+    "id": 7,
+    "name": "Webcam HD",
+    "price": 89.99,
+    "stock_quantity": 50,
+    "category": "electronics",
+    "description": "1080p 60fps webcam with auto-focus, built-in ring light, and noise-cancelling microphone.",
+    "category_fields": {
+      "cpu": null,
+      "ram_gb": null,
+      "storage_gb": null,
+      "screen_inches": null
+    }
+  },
+  {
+    "id": 8,
+    "name": "Portable SSD",
+    "price": 109.99,
+    "stock_quantity": 80,
+    "category": "electronics",
+    "description": "1TB portable NVMe SSD with USB 3.2 Gen 2, rugged aluminum casing, up to 1050 MB/s read.",
+    "category_fields": {
+      "cpu": null,
+      "ram_gb": null,
+      "storage_gb": 1000,
+      "screen_inches": null
+    }
+  },
+  {
+    "id": 9,
+    "name": "Wool Sweater",
+    "price": 89.99,
+    "stock_quantity": 40,
+    "category": "clothing",
+    "description": "Classic crewneck sweater in 100% merino wool, soft against skin and naturally temperature-regulating.",
+    "category_fields": {
+      "material": "merino wool",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["navy", "charcoal", "cream"]
+    }
+  },
+  {
+    "id": 10,
+    "name": "Running Shoes",
+    "price": 124.99,
+    "stock_quantity": 55,
+    "category": "clothing",
+    "description": "Lightweight road-running shoes with responsive foam midsole and breathable mesh upper.",
+    "category_fields": {
+      "material": "mesh and synthetic",
+      "sizes": ["7", "8", "9", "10", "11", "12"],
+      "colors": ["black", "white", "neon green"]
+    }
+  },
+  {
+    "id": 11,
+    "name": "Denim Jacket",
+    "price": 79.99,
+    "stock_quantity": 35,
+    "category": "clothing",
+    "description": "Classic straight-fit denim jacket in heavyweight stonewash denim, brass-tone buttons.",
+    "category_fields": {
+      "material": "100% cotton denim",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["light wash", "dark wash"]
+    }
+  },
+  {
+    "id": 12,
+    "name": "Cotton T-Shirt",
+    "price": 24.99,
+    "stock_quantity": 150,
+    "category": "clothing",
+    "description": "Essential everyday tee in heavyweight 100% organic cotton, pre-shrunk and ring-spun.",
+    "category_fields": {
+      "material": "organic cotton",
+      "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
+      "colors": ["white", "black", "grey", "navy", "olive"]
+    }
+  },
+  {
+    "id": 13,
+    "name": "Cargo Pants",
+    "price": 69.99,
+    "stock_quantity": 45,
+    "category": "clothing",
+    "description": "Technical cargo pants with 8 pockets, articulated knees, and water-resistant finish.",
+    "category_fields": {
+      "material": "nylon-cotton blend",
+      "sizes": ["30x30", "32x30", "32x32", "34x32", "36x32"],
+      "colors": ["khaki", "black", "olive"]
+    }
+  },
+  {
+    "id": 14,
+    "name": "Rain Jacket",
+    "price": 149.99,
+    "stock_quantity": 28,
+    "category": "clothing",
+    "description": "Packable waterproof rain jacket with sealed seams, adjustable hood, and pit zips.",
+    "category_fields": {
+      "material": "3-layer Gore-Tex",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["red", "blue", "black"]
+    }
+  },
+  {
+    "id": 15,
+    "name": "Silk Scarf",
+    "price": 44.99,
+    "stock_quantity": 2,
+    "category": "clothing",
+    "description": "Hand-rolled 100% silk scarf with original botanical print, 90x90cm.",
+    "category_fields": {
+      "material": "100% silk",
+      "sizes": ["one size"],
+      "colors": ["floral blue", "floral rose"]
+    }
+  },
+  {
+    "id": 16,
+    "name": "Leather Belt",
+    "price": 39.99,
+    "stock_quantity": 70,
+    "category": "clothing",
+    "description": "Full-grain leather dress belt with polished nickel buckle, 1.25 inch wide.",
+    "category_fields": {
+      "material": "full-grain leather",
+      "sizes": ["32", "34", "36", "38", "40"],
+      "colors": ["brown", "black"]
+    }
+  },
+  {
+    "id": 17,
+    "name": "Data Engineering Handbook",
+    "price": 49.99,
+    "stock_quantity": 60,
+    "category": "books",
+    "description": "Comprehensive guide to building scalable data pipelines, covering ingestion, transformation, and serving layers.",
+    "category_fields": {
+      "isbn": "9781098148607",
+      "author": "Joe Reis & Matt Housley",
+      "page_count": 445,
+      "genre": "technology"
+    }
+  },
+  {
+    "id": 18,
+    "name": "Python Cookbook",
+    "price": 44.99,
+    "stock_quantity": 75,
+    "category": "books",
+    "description": "Recipes for mastering Python 3, covering data structures, algorithms, concurrency, and metaprogramming.",
+    "category_fields": {
+      "isbn": "9781449340377",
+      "author": "David Beazley & Brian K. Jones",
+      "page_count": 706,
+      "genre": "technology"
+    }
+  },
+  {
+    "id": 19,
+    "name": "SQL Deep Dive",
+    "price": 39.99,
+    "stock_quantity": 55,
+    "category": "books",
+    "description": "Advanced SQL techniques for analytical queries, window functions, CTEs, and query optimization.",
+    "category_fields": {
+      "isbn": "9780137610556",
+      "author": "Itzik Ben-Gan",
+      "page_count": 520,
+      "genre": "technology"
+    }
+  },
+  {
+    "id": 20,
+    "name": "Clean Code",
+    "price": 34.99,
+    "stock_quantity": 90,
+    "category": "books",
+    "description": "A handbook of agile software craftsmanship, covering naming, functions, classes, and refactoring.",
+    "category_fields": {
+      "isbn": "9780132350884",
+      "author": "Robert C. Martin",
+      "page_count": 431,
+      "genre": "technology"
+    }
+  },
+  {
+    "id": 21,
+    "name": "Designing Data-Intensive Applications",
+    "price": 54.99,
+    "stock_quantity": 48,
+    "category": "books",
+    "description": "The definitive guide to distributed systems, covering replication, partitioning, transactions, and consistency.",
+    "category_fields": {
+      "isbn": "9781449373320",
+      "author": "Martin Kleppmann",
+      "page_count": 562,
+      "genre": "technology"
+    }
+  },
+  {
+    "id": 22,
+    "name": "The Pragmatic Programmer",
+    "price": 42.99,
+    "stock_quantity": 65,
+    "category": "books",
+    "description": "Timeless advice for software developers on career, code, and craft. 20th anniversary edition.",
+    "category_fields": {
+      "isbn": "9780135957059",
+      "author": "David Thomas & Andrew Hunt",
+      "page_count": 352,
+      "genre": "technology"
+    }
+  },
+  {
+    "id": 23,
+    "name": "Database Internals",
+    "price": 47.99,
+    "stock_quantity": 38,
+    "category": "books",
+    "description": "Deep dive into how databases work internally: storage engines, B-trees, distributed consensus, and log-structured storage.",
+    "category_fields": {
+      "isbn": "9781492040347",
+      "author": "Alex Petrov",
+      "page_count": 374,
+      "genre": "technology"
+    }
+  },
+  {
+    "id": 24,
+    "name": "Algorithms Illustrated",
+    "price": 29.99,
+    "stock_quantity": 85,
+    "category": "books",
+    "description": "Visual introduction to algorithms and data structures, with clear diagrams and Python code examples.",
+    "category_fields": {
+      "isbn": "9781617292231",
+      "author": "Aditya Bhargava",
+      "page_count": 256,
+      "genre": "technology"
+    }
+  },
+  {
+    "id": 25,
+    "name": "Organic Granola",
+    "price": 12.99,
+    "stock_quantity": 200,
+    "category": "food",
+    "description": "Stone-baked granola with rolled oats, raw almonds, coconut flakes, and local honey. No artificial ingredients.",
+    "category_fields": {
+      "weight_g": 500,
+      "organic": true,
+      "allergens": ["nuts", "gluten", "soy"]
+    }
+  },
+  {
+    "id": 26,
+    "name": "Dark Chocolate Bar",
+    "price": 8.99,
+    "stock_quantity": 180,
+    "category": "food",
+    "description": "Single-origin 85% dark chocolate bar from Ecuador, stone-ground and bean-to-bar crafted.",
+    "category_fields": {
+      "weight_g": 80,
+      "organic": true,
+      "allergens": ["dairy", "soy"]
+    }
+  },
+  {
+    "id": 27,
+    "name": "Artisan Coffee Beans",
+    "price": 18.99,
+    "stock_quantity": 150,
+    "category": "food",
+    "description": "Light-roast single-origin Ethiopian Yirgacheffe, whole bean, notes of blueberry and jasmine.",
+    "category_fields": {
+      "weight_g": 340,
+      "organic": true,
+      "allergens": []
+    }
+  },
+  {
+    "id": 28,
+    "name": "Greek Olive Oil",
+    "price": 22.99,
+    "stock_quantity": 90,
+    "category": "food",
+    "description": "Extra-virgin olive oil cold-pressed from Koroneiki olives in Crete, PDO certified.",
+    "category_fields": {
+      "weight_g": 750,
+      "organic": false,
+      "allergens": []
+    }
+  },
+  {
+    "id": 29,
+    "name": "Sourdough Bread",
+    "price": 9.99,
+    "stock_quantity": 40,
+    "category": "food",
+    "description": "Naturally leavened country sourdough with open crumb, crisp crust, and 72-hour cold fermentation.",
+    "category_fields": {
+      "weight_g": 800,
+      "organic": false,
+      "allergens": ["gluten"]
+    }
+  },
+  {
+    "id": 30,
+    "name": "Raw Honey",
+    "price": 15.99,
+    "stock_quantity": 110,
+    "category": "food",
+    "description": "Unfiltered wildflower honey harvested from Pacific Northwest hives, naturally crystallized.",
+    "category_fields": {
+      "weight_g": 450,
+      "organic": true,
+      "allergens": []
+    }
+  },
+  {
+    "id": 31,
+    "name": "Mixed Nuts",
+    "price": 16.99,
+    "stock_quantity": 130,
+    "category": "food",
+    "description": "Dry-roasted mixed nuts with cashews, almonds, walnuts, and pecans. No added salt or oil.",
+    "category_fields": {
+      "weight_g": 400,
+      "organic": false,
+      "allergens": ["nuts"]
+    }
+  },
+  {
+    "id": 32,
+    "name": "Matcha Powder",
+    "price": 24.99,
+    "stock_quantity": 75,
+    "category": "food",
+    "description": "Ceremonial-grade Japanese matcha from Uji, Kyoto. Stone-ground from shade-grown tencha leaves.",
+    "category_fields": {
+      "weight_g": 100,
+      "organic": true,
+      "allergens": []
+    }
+  },
+  {
+    "id": 33,
+    "name": "Standing Desk",
+    "price": 599.99,
+    "stock_quantity": 12,
+    "category": "home",
+    "description": "Electric height-adjustable standing desk with dual motor, programmable presets, and anti-collision sensors.",
+    "category_fields": {
+      "dimensions": {"width": 140.0, "height": 118.0, "depth": 70.0},
+      "material": "bamboo top, steel frame",
+      "assembly_required": true
+    }
+  },
+  {
+    "id": 34,
+    "name": "Ergonomic Chair",
+    "price": 449.99,
+    "stock_quantity": 15,
+    "category": "home",
+    "description": "Fully adjustable ergonomic office chair with lumbar support, 4D armrests, and breathable mesh back.",
+    "category_fields": {
+      "dimensions": {"width": 68.0, "height": 120.0, "depth": 65.0},
+      "material": "mesh back, foam seat",
+      "assembly_required": true
+    }
+  },
+  {
+    "id": 35,
+    "name": "Bookshelf Oak",
+    "price": 189.99,
+    "stock_quantity": 20,
+    "category": "home",
+    "description": "5-shelf solid oak bookcase with adjustable shelves and a natural oil finish.",
+    "category_fields": {
+      "dimensions": {"width": 80.0, "height": 180.0, "depth": 30.0},
+      "material": "solid oak",
+      "assembly_required": true
+    }
+  },
+  {
+    "id": 36,
+    "name": "Ceramic Lamp",
+    "price": 74.99,
+    "stock_quantity": 35,
+    "category": "home",
+    "description": "Hand-thrown ceramic table lamp with linen shade, warm LED bulb included.",
+    "category_fields": {
+      "dimensions": {"width": 28.0, "height": 52.0, "depth": 28.0},
+      "material": "ceramic and linen",
+      "assembly_required": false
+    }
+  },
+  {
+    "id": 37,
+    "name": "Wall Clock",
+    "price": 49.99,
+    "stock_quantity": 60,
+    "category": "home",
+    "description": "Minimalist 30cm wall clock with silent sweep movement and solid walnut frame.",
+    "category_fields": {
+      "dimensions": {"width": 30.0, "height": 30.0, "depth": 4.0},
+      "material": "walnut wood",
+      "assembly_required": false
+    }
+  },
+  {
+    "id": 38,
+    "name": "Plant Pot Set",
+    "price": 34.99,
+    "stock_quantity": 55,
+    "category": "home",
+    "description": "Set of 3 speckled stoneware plant pots with drainage holes and matching saucers.",
+    "category_fields": {
+      "dimensions": {"width": 18.0, "height": 16.0, "depth": 18.0},
+      "material": "stoneware",
+      "assembly_required": false
+    }
+  },
+  {
+    "id": 39,
+    "name": "Throw Blanket",
+    "price": 64.99,
+    "stock_quantity": 45,
+    "category": "home",
+    "description": "Chunky-knit throw blanket in 100% cotton, oversized 130x170cm, pre-washed for softness.",
+    "category_fields": {
+      "dimensions": {"width": 130.0, "height": 170.0, "depth": 3.0},
+      "material": "100% cotton",
+      "assembly_required": false
+    }
+  },
+  {
+    "id": 40,
+    "name": "Picture Frame Set",
+    "price": 29.99,
+    "stock_quantity": 2,
+    "category": "home",
+    "description": "Gallery wall set of 6 black aluminum frames in mixed sizes (4x6, 5x7, 8x10), shatter-resistant acrylic.",
+    "category_fields": {
+      "dimensions": {"width": 25.0, "height": 30.0, "depth": 2.0},
+      "material": "aluminum",
+      "assembly_required": false
+    }
+  }
+]
