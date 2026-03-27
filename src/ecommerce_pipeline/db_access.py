@@ -117,6 +117,9 @@ class DBAccess:
                 email=customer_obj.email,
             )
 
+            # Collect ids before session closes (ORM objects detach on close)
+            items_for_redis = [(p.id, qty) for p, qty in products_with_qty]
+
             session.commit()
             session.refresh(order)
 
@@ -127,6 +130,11 @@ class DBAccess:
             raise
         finally:
             session.close()
+
+        # Decrement Redis inventory counters (best-effort, after PG commit)
+        if self._redis:
+            for product_id, quantity in items_for_redis:
+                self._redis.decrby(f"inventory:{product_id}", quantity)
 
         # Save MongoDB snapshot (best-effort, outside transaction)
         self.save_order_snapshot(
@@ -155,10 +163,19 @@ class DBAccess:
         """
         from ecommerce_pipeline.models.responses import ProductResponse
 
+        cache_key = f"product:{product_id}"
+
+        # Cache-aside: check Redis first
+        if self._redis:
+            cached = self._redis.get(cache_key)
+            if cached:
+                return ProductResponse.model_validate_json(cached)
+
         doc = self._mongo_db["product_catalog"].find_one({"id": product_id})
         if doc is None:
             return None
-        return ProductResponse(
+
+        product = ProductResponse(
             id=doc["id"],
             name=doc["name"],
             price=doc["price"],
@@ -167,6 +184,12 @@ class DBAccess:
             description=doc["description"],
             category_fields=doc.get("category_fields", {}),
         )
+
+        # Populate cache with 300-second TTL
+        if self._redis:
+            self._redis.set(cache_key, product.model_dump_json(), ex=300)
+
+        return product
 
     def search_products(
         self,
@@ -310,7 +333,8 @@ class DBAccess:
         Call this after updating a product's data so the next read fetches
         fresh data from the primary store. No-op if no entry exists.
         """
-        raise NotImplementedError("Phase 2: implement invalidate_product_cache")
+        if self._redis:
+            self._redis.delete(f"product:{product_id}")
 
     def record_product_view(self, customer_id: int, product_id: int) -> None:
         """Record that a customer viewed a product.
@@ -318,7 +342,10 @@ class DBAccess:
         Maintains a bounded, ordered list of the customer's most recently
         viewed products (most recent first, capped at 10 entries).
         """
-        raise NotImplementedError("Phase 2: implement record_product_view")
+        if self._redis:
+            key = f"recently_viewed:{customer_id}"
+            self._redis.lpush(key, product_id)
+            self._redis.ltrim(key, 0, 9)
 
     def get_recently_viewed(self, customer_id: int) -> list[int]:
         """Return up to 10 recently viewed product IDs for a customer.
@@ -326,7 +353,10 @@ class DBAccess:
         Returns IDs as integers, most recently viewed first.
         Returns an empty list if no views have been recorded.
         """
-        raise NotImplementedError("Phase 2: implement get_recently_viewed")
+        if not self._redis:
+            return []
+        items = self._redis.lrange(f"recently_viewed:{customer_id}", 0, 9)
+        return [int(x) for x in items]
 
     # ── Phase 3 ───────────────────────────────────────────────────────────────
     #

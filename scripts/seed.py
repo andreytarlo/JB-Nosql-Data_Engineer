@@ -74,6 +74,11 @@ def seed(engine, mongo_db, redis_client=None, neo4j_driver=None):
     finally:
         session.close()
 
+    # Phase 2: initialize Redis inventory counters
+    if redis_client:
+        for p in products:
+            redis_client.set(f"inventory:{p['id']}", p["stock_quantity"])
+
     # Load products into MongoDB product catalog
     for p in products:
         mongo_db["product_catalog"].insert_one({
