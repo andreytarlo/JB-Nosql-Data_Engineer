@@ -79,6 +79,36 @@ def seed(engine, mongo_db, redis_client=None, neo4j_driver=None):
         for p in products:
             redis_client.set(f"inventory:{p['id']}", p["stock_quantity"])
 
+    # Phase 3: Build Neo4j co-purchase graph from historical orders
+    if neo4j_driver:
+        from itertools import combinations
+        historical_orders = json.load(open(SEED_DIR / "historical_orders.json"))
+        product_name_map = {p["id"]: p["name"] for p in products}
+
+        with neo4j_driver.session() as neo4j_session:
+            # Create Product nodes
+            for p in products:
+                neo4j_session.run(
+                    "MERGE (p:Product {id: $id}) SET p.name = $name",
+                    id=p["id"], name=p["name"],
+                )
+            # Build BOUGHT_TOGETHER edges from every pair in each historical order
+            for order in historical_orders:
+                pids = order["product_ids"]
+                for id1, id2 in combinations(pids, 2):
+                    name1 = product_name_map.get(id1, str(id1))
+                    name2 = product_name_map.get(id2, str(id2))
+                    neo4j_session.run(
+                        """
+                        MERGE (a:Product {id: $id1}) SET a.name = $name1
+                        MERGE (b:Product {id: $id2}) SET b.name = $name2
+                        MERGE (a)-[r:BOUGHT_TOGETHER]->(b)
+                        ON CREATE SET r.weight = 1
+                        ON MATCH SET r.weight = r.weight + 1
+                        """,
+                        id1=id1, name1=name1, id2=id2, name2=name2,
+                    )
+
     # Load products into MongoDB product catalog
     for p in products:
         mongo_db["product_catalog"].insert_one({

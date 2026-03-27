@@ -117,8 +117,9 @@ class DBAccess:
                 email=customer_obj.email,
             )
 
-            # Collect ids before session closes (ORM objects detach on close)
+            # Collect ids/names before session closes (ORM objects detach on close)
             items_for_redis = [(p.id, qty) for p, qty in products_with_qty]
+            items_for_neo4j = [(p.id, p.name) for p, _ in products_with_qty]
 
             session.commit()
             session.refresh(order)
@@ -135,6 +136,21 @@ class DBAccess:
         if self._redis:
             for product_id, quantity in items_for_redis:
                 self._redis.decrby(f"inventory:{product_id}", quantity)
+
+        # Merge co-purchase edges in Neo4j for every pair (best-effort)
+        if self._neo4j and len(items_for_neo4j) >= 2:
+            with self._neo4j.session() as neo4j_session:
+                for (id1, name1), (id2, name2) in combinations(items_for_neo4j, 2):
+                    neo4j_session.run(
+                        """
+                        MERGE (a:Product {id: $id1}) SET a.name = $name1
+                        MERGE (b:Product {id: $id2}) SET b.name = $name2
+                        MERGE (a)-[r:BOUGHT_TOGETHER]->(b)
+                        ON CREATE SET r.weight = 1
+                        ON MATCH SET r.weight = r.weight + 1
+                        """,
+                        id1=id1, name1=name1, id2=id2, name2=name2,
+                    )
 
         # Save MongoDB snapshot (best-effort, outside transaction)
         self.save_order_snapshot(
@@ -373,4 +389,27 @@ class DBAccess:
         See RecommendationResponse in models/responses.py for the return shape.
         Sorted by score descending. Returns an empty list if no co-purchase relationships exist.
         """
-        raise NotImplementedError("Phase 3: implement get_recommendations")
+        from ecommerce_pipeline.models.responses import RecommendationResponse
+
+        if not self._neo4j:
+            return []
+
+        with self._neo4j.session() as neo4j_session:
+            result = neo4j_session.run(
+                """
+                MATCH (p:Product {id: $product_id})-[r:BOUGHT_TOGETHER]-(other:Product)
+                RETURN other.id AS product_id, other.name AS name, r.weight AS score
+                ORDER BY score DESC
+                LIMIT $limit
+                """,
+                product_id=product_id,
+                limit=limit,
+            )
+            return [
+                RecommendationResponse(
+                    product_id=row["product_id"],
+                    name=row["name"],
+                    score=row["score"],
+                )
+                for row in result
+            ]
