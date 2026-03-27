@@ -41,7 +41,50 @@ def seed(engine, mongo_db, redis_client=None, neo4j_driver=None):
         customers = json.load(open(SEED_DIR / "customers.json"))
         historical_orders = json.load(open(SEED_DIR / "historical_orders.json"))
     """
-    pass  # TODO: Phase 1 — load products and customers into Postgres + MongoDB
+    import json
+    from sqlalchemy.orm import sessionmaker
+    from ecommerce_pipeline.postgres_models import Customer, Product
+
+    products = json.load(open(SEED_DIR / "products.json"))
+    customers = json.load(open(SEED_DIR / "customers.json"))
+
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    try:
+        for c in customers:
+            session.add(Customer(
+                id=c["id"],
+                name=c["name"],
+                email=c["email"],
+                address=json.dumps(c["address"]),
+            ))
+        for p in products:
+            session.add(Product(
+                id=p["id"],
+                name=p["name"],
+                price=p["price"],
+                stock_quantity=p["stock_quantity"],
+                category=p["category"],
+                description=p["description"],
+            ))
+        session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+
+    # Load products into MongoDB product catalog
+    for p in products:
+        mongo_db["product_catalog"].insert_one({
+            "id": p["id"],
+            "name": p["name"],
+            "price": p["price"],
+            "stock_quantity": p["stock_quantity"],
+            "category": p["category"],
+            "description": p["description"],
+            "category_fields": p.get("category_fields", {}),
+        })
 
 
 # ---------------------------------------------------------------------------
