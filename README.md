@@ -88,7 +88,7 @@ You can open the Neo4j Browser at [http://localhost:7474](http://localhost:7474)
 
 ```bash
 cp .env.example .env
-uv sync
+uv sync --extra dev
 ```
 
 ### 3. Run migrations and seed data (after you implement them)
